@@ -1,0 +1,35 @@
+{
+  "name": "xpressengine-plugin/demo_import",
+  "description": "This Package is Xpressengine Plugin - DemoImport plugin.",
+  "keywords": [
+    "xpressengine",
+    "plugin"
+  ],
+  "license": "LGPL-2.1",
+  "version": "1.0.0",
+  "type": "xpressengine-plugin",
+  "support": {
+    "email": "input@your.email"
+  },
+  "authors": [
+    {
+      "name": "input your name",
+      "email": "input@your.email",
+      "homepage": "http://input.your.site",
+      "role": "Developer"
+    }
+  ],
+  "extra": {
+    "xpressengine": {
+      "title": "DemoImport",
+      "component": {}
+    }
+  },
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Xpressengine\\XePlugin\\DemoImport\\": "src/"
+    }
+  }
+}
