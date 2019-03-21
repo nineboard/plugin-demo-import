@@ -1,0 +1,52 @@
+div.title {
+	height: 200px;
+	color: #2389EE;
+	text-align: center;
+	margin: auto;
+	font-size: 30px;
+	padding: 200px;
+}
+
+.first_guide, .import_success_title {
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.second_guide {
+	padding-left: 10px;
+	color: #7D7F85;
+}
+
+.import_btn {
+	background-color: #345CD8;
+	color: #FFF;
+	border: none;
+}
+.import_btn:hover {
+	background-color: #64a0d8;
+	color: #FFF;
+	border: none;
+ }
+
+.success_panel {
+	border-left: 3px solid #108DFF;
+}
+
+.fail_panel {
+	border-left: 3px solid red;
+}
+
+.theme_item {
+	display: flex !important;
+	border-left: none !important;
+	border-right: none !important;
+}
+
+.plugin-title {
+	display: block;
+	padding: 10px 0 0 12px;
+}
+
+.success_row, .fail_row {
+	display: none;
+}

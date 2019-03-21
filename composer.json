@@ -9,13 +9,13 @@
   "version": "1.0.0",
   "type": "xpressengine-plugin",
   "support": {
-    "email": "input@your.email"
+    "email": "developers@xpressengine.com"
   },
   "authors": [
     {
-      "name": "input your name",
-      "email": "input@your.email",
-      "homepage": "http://input.your.site",
+      "name": "XpressEngine",
+      "email": "developers@xpressengine.com",
+      "homepage": "https://www.xpressengine.io",
       "role": "Developer"
     }
   ],
@@ -29,7 +29,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Xpressengine\\XePlugin\\DemoImport\\": "src/"
+      "Xpressengine\\Plugins\\DemoImport\\": "src/"
     }
   }
 }

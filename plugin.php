@@ -1,8 +1,10 @@
 <?php
+
 namespace Xpressengine\XePlugin\DemoImport;
 
 use Route;
 use Xpressengine\Plugin\AbstractPlugin;
+use Xpressengine\Plugins\DemoImport\handler;
 
 class Plugin extends AbstractPlugin
 {
@@ -13,24 +15,9 @@ class Plugin extends AbstractPlugin
      */
     public function boot()
     {
-        // implement code
-
         $this->route();
-    }
-
-    protected function route()
-    {
-        // implement code
-
-        Route::fixed(
-            $this->getId(),
-            function () {
-                Route::get('/', [
-                    'as' => 'demo_import::index','uses' => 'Xpressengine\XePlugin\DemoImport\Controller@index'
-                ]);
-            }
-        );
-
+        $this->storeSettingMenu();
+        $this->bindClass();
     }
 
     /**
@@ -52,7 +39,7 @@ class Plugin extends AbstractPlugin
      */
     public function install()
     {
-        // implement code
+        $this->importLang();
     }
 
     /**
@@ -89,5 +76,47 @@ class Plugin extends AbstractPlugin
         // implement code
 
         return parent::checkUpdated();
+    }
+
+    protected function route()
+    {
+        Route::settings('demo_import', function () {
+            Route::group([
+                'namespace' => 'Xpressengine\\Plugins\\DemoImport\\Controllers',
+                'as' => 'demo_import.'
+            ], function () {
+                Route::get('/index', ['as' => 'index', 'uses' => 'ImportController@index', 'settings_menu' => 'plugin.demo_import']);
+                Route::post('/store_theme', ['as' => 'store_theme', 'uses' => 'ImportController@storeTheme']);
+            });
+        });
+    }
+
+    private function importLang()
+    {
+        \XeLang::putFromLangDataSource('demo_import', $this->path('langs/lang.php'));
+    }
+
+    private function storeSettingMenu()
+    {
+        app('xe.register')->push(
+            'settings/menu',
+            'plugin.demo_import',
+            [
+                'title' => 'demo_import::demoImport',
+                'description' => 'demo_import::settingMenuDescription',
+                'display' => true,
+                'ordering' => 400
+            ]
+        );
+    }
+
+    private function bindClass()
+    {
+        app()->singleton(Handler::class, function () {
+            $handler = new Handler();
+
+            return $handler;
+        });
+        app()->alias(Handler::class, 'demo_import::handler');
     }
 }
