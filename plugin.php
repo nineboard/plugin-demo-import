@@ -4,7 +4,7 @@ namespace Xpressengine\XePlugin\DemoImport;
 
 use Route;
 use Xpressengine\Plugin\AbstractPlugin;
-use Xpressengine\Plugins\DemoImport\handler;
+use Xpressengine\Plugins\DemoImport\Handler;
 
 class Plugin extends AbstractPlugin
 {
