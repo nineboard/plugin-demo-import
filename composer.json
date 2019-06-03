@@ -1,6 +1,6 @@
 {
   "name": "xpressengine-plugin/demo_import",
-  "description": "This Package is Xpressengine Plugin - DemoImport plugin.",
+  "description": "사전에 구성된 테마정보를 불러올 수 있는 플러그인 입니다.",
   "keywords": [
     "xpressengine",
     "plugin"
@@ -15,7 +15,7 @@
     {
       "name": "XpressEngine",
       "email": "developers@xpressengine.com",
-      "homepage": "https://www.xpressengine.io",
+      "homepage": "https://store.xehub.io/plugins/demo_import",
       "role": "Developer"
     }
   ],
