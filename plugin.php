@@ -85,7 +85,11 @@ class Plugin extends AbstractPlugin
                 'namespace' => 'Xpressengine\\Plugins\\DemoImport\\Controllers',
                 'as' => 'demo_import.'
             ], function () {
-                Route::get('/index', ['as' => 'index', 'uses' => 'ImportController@index', 'settings_menu' => 'plugin.demo_import']);
+                Route::get('/index', [
+                    'as' => 'index',
+                    'uses' => 'ImportController@index',
+                    'settings_menu' => 'theme.demo_import'
+                ]);
                 Route::post('/store_theme', ['as' => 'store_theme', 'uses' => 'ImportController@storeTheme']);
             });
         });
@@ -100,12 +104,12 @@ class Plugin extends AbstractPlugin
     {
         app('xe.register')->push(
             'settings/menu',
-            'plugin.demo_import',
+            'theme.demo_import',
             [
                 'title' => 'demo_import::demoImport',
                 'description' => 'demo_import::settingMenuDescription',
                 'display' => true,
-                'ordering' => 400
+                'ordering' => 500
             ]
         );
     }
