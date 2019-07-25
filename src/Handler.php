@@ -1,4 +1,16 @@
 <?php
+/**
+ * Handler.php
+ *
+ * PHP version 7
+ *
+ * @category    DemoImport
+ * @package     Xpressengine\Plugins\DemoImport
+ * @author      XE Developers <developers@xpressengine.com>
+ * @copyright   2019 Copyright XEHub Corp. <https://www.xehub.io>
+ * @license     http://www.gnu.org/licenses/lgpl-3.0-standalone.html LGPL
+ * @link        https://xpressengine.io
+ */
 
 namespace Xpressengine\Plugins\DemoImport;
 
@@ -11,6 +23,16 @@ use Xpressengine\Theme\ThemeHandler;
 use XeMenu;
 use XeSite;
 
+/**
+ * Class Handler
+ *
+ * @category    DemoImport
+ * @package     Xpressengine\Plugins\DemoImport
+ * @author      XE Developers <developers@xpressengine.com>
+ * @copyright   2019 Copyright XEHub Corp. <https://www.xehub.io>
+ * @license     http://www.gnu.org/licenses/lgpl-3.0-standalone.html LGPL
+ * @link        https://xpressengine.io
+ */
 class Handler
 {
     const DEMO_MENU_ID = 'demo_import::DEMO_MENU_ID';
