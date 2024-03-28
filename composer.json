@@ -1,5 +1,5 @@
 {
-  "name": "xpressengine-plugin/demo_import",
+  "name": "nineboard/plugin-demo-import",
   "description": "사전에 구성된 테마정보를 불러올 수 있는 플러그인 입니다.",
   "keywords": [
     "xpressengine",
@@ -26,11 +26,26 @@
     }
   },
   "require": {
-    "xpressengine/xpressengine": "^3.0.4"
+    "nineboard/nineboard": "dev-main"
   },
   "autoload": {
     "psr-4": {
       "Xpressengine\\Plugins\\DemoImport\\": "src/"
+    }
+  },
+  "require-dev": {
+    "laravel/pint": "^1.0.0"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git://github.com/nineboard/nineboard.git"
+    }
+  ],
+  "config": {
+    "allow-plugins": {
+      "xpressengine/installer": true,
+      "wikimedia/composer-merge-plugin": true
     }
   }
 }

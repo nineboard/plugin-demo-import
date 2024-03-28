@@ -5,45 +5,52 @@
  * PHP version 7
  *
  * @category    DemoImport
- * @package     Xpressengine\Plugins\DemoImport
+ *
  * @author      XE Developers <developers@xpressengine.com>
  * @copyright   2019 Copyright XEHub Corp. <https://www.xehub.io>
  * @license     http://www.gnu.org/licenses/lgpl-3.0-standalone.html LGPL
+ *
  * @link        https://xpressengine.io
  */
 
 namespace Xpressengine\Plugins\DemoImport;
 
+use XeMenu;
+use XeSite;
 use Xpressengine\Menu\MenuHandler;
 use Xpressengine\Permission\Grant;
 use Xpressengine\Plugins\DemoImport\Exceptions\ExistThemeNameException;
 use Xpressengine\Routing\InstanceRoute;
 use Xpressengine\Skin\SkinHandler;
 use Xpressengine\Theme\ThemeHandler;
-use XeMenu;
-use XeSite;
 
 /**
  * Class Handler
  *
  * @category    DemoImport
- * @package     Xpressengine\Plugins\DemoImport
+ *
  * @author      XE Developers <developers@xpressengine.com>
  * @copyright   2019 Copyright XEHub Corp. <https://www.xehub.io>
  * @license     http://www.gnu.org/licenses/lgpl-3.0-standalone.html LGPL
+ *
  * @link        https://xpressengine.io
  */
 class Handler
 {
     const DEMO_MENU_ID = 'demo_import::DEMO_MENU_ID';
+
     const DEMO_BOARD_ID = 'demo_import::DEMO_BOARD_ID';
+
     const DEMO_BANNER_ID = 'demo_import::DEMO_BANNER_ID';
+
     const DEMO_WIDGET_PAGE_ID = 'demo_import::DEMO_WIDGET_PAGE_ID';
 
     protected $supportMethodNames = [];
+
     protected $themeConfigs = [];
 
     protected $menuId = '';
+
     protected $menuItemIds = [];
 
     public function __construct()
@@ -146,11 +153,11 @@ class Handler
             $prefix = $themeHandler->getConfigId($theme->getId());
             $id = str_replace([$prefix, $themeHandler->configDelimiter], '', $lastId);
 
-            $newId = (int)$id + 1;
+            $newId = (int) $id + 1;
         }
 
         foreach ($themeConfigs as $configName => $config) {
-            $this->themeConfigs[$configName] = $theme->getId() . $themeHandler->configDelimiter . $newId++;
+            $this->themeConfigs[$configName] = $theme->getId().$themeHandler->configDelimiter.$newId++;
 
             app('xe.theme')->setThemeConfig($this->themeConfigs[$configName], $config);
         }
@@ -158,13 +165,13 @@ class Handler
 
     protected function createMenu($theme)
     {
-        $title = $theme->getTitle() . '_demo';
-        $menuDescription = $theme->getTitle() . ' demo 메뉴입니다.';
+        $title = $theme->getTitle().'_demo';
+        $menuDescription = $theme->getTitle().' demo 메뉴입니다.';
 
         $menu = XeMenu::createMenu([
             'title' => $title,
             'description' => $menuDescription,
-            'site_key' => XeSite::getCurrentSiteKey()
+            'site_key' => XeSite::getCurrentSiteKey(),
         ]);
 
         app('xe.permission')->register($menu->getKey(), XeMenu::getDefaultGrant());
@@ -207,8 +214,8 @@ class Handler
 
                             $skin = $skinHandler->get($options['boardSkin']);
 
-                            $skinHandler->assign('module/board@board:' . $item->id, $skin, 'desktop');
-                            $skinHandler->assign('module/board@board:' . $item->id, $skin, 'mobile');
+                            $skinHandler->assign('module/board@board:'.$item->id, $skin, 'desktop');
+                            $skinHandler->assign('module/board@board:'.$item->id, $skin, 'mobile');
                         }
                     }
 
@@ -218,7 +225,7 @@ class Handler
                 foreach ($itemContents as $key => $bannerGroupItem) {
                     $bannerGroup = app('xe.banner')->createGroup([
                         'title' => $bannerGroupItem['title'],
-                        'skin' => $bannerGroupItem['skin']
+                        'skin' => $bannerGroupItem['skin'],
                     ]);
 
                     $this->menuItemIds[$key] = $bannerGroup->id;
@@ -282,7 +289,7 @@ class Handler
 
     protected function updateWidgetpageContents($widgetpageId, $contents)
     {
-        app('xe.widgetbox')->update('widgetpage-' . $widgetpageId, ['content' => $contents]);
+        app('xe.widgetbox')->update('widgetpage-'.$widgetpageId, ['content' => $contents]);
     }
 
     public function getUrl($prefix)
@@ -290,7 +297,7 @@ class Handler
         $prefix = strtolower($prefix);
 
         for ($i = 0; $i <= 1000; $i++) {
-            $url = $prefix . rand(1, 20000);
+            $url = $prefix.rand(1, 20000);
 
             if (InstanceRoute::where('url', $url)->count() == 0) {
                 return $url;
